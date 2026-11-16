@@ -131,7 +131,7 @@ FORMAT_DRIVER   = --output-target=efi-bsdrv-$(ARCH)
 ifeq ($(ARCH),x86_64)
   GNUEFI_LDFLAGS += -znocombreloc -zdefs
 
-  ARCH_CFLAGS = -DEFIX64 -DEFI_FUNCTION_WRAPPER -m64 -mno-red-zone 
+  ARCH_CFLAGS = -DEFIX64 -DEFI_FUNCTION_WRAPPER -m64 -mno-red-zone -mno-avx -mno-avx2 -mno-avx512f
 ifeq ($(MAKEWITH),TIANO)
   ARCH_CFLAGS += -mcmodel=large "-DEFIAPI=__attribute__((ms_abi))" 
 endif
